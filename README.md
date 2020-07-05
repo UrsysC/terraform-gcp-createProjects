@@ -36,30 +36,9 @@ terraform {
 module "gcp-create-project" {
   source  = "https://github.com/UrsysC/terraform-gcp-createProjects/"
   version = "1.0"
-
   project_name = "my-test-project"
   project_owner = "gcp-admins@example.com"
   project_monthly_budget = 10
+  enable_automatic_iam = true
 }
 ```
-
-# Metadata
-The codebase is located here in github.com/freshbooks under the name gcp-projects-module.
-The service owner is DYER (dyer@freshbooks.com).
-
-# Escalation Procedure
-In the event assistance is needed to resolve an issue with this service, the service owner has requested to be the next escalation point. Since this is a module and not public facing, it should be non-critical and escalations should only be duing business hours.
-
-# External Dependencies
-GCP API
-github.com
-
-# Internal Dependencies
-PostgreSQL database, running on an RDS instance located at rds-123.foo.com.
-
-# Tech Stack
-Terrafrom
-GCP API
-
-# Metrics and Logs
-none at this time
