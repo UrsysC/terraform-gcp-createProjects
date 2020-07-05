@@ -42,5 +42,6 @@ module "gcp-create-project" {
   project_owner = "gcp-admins@example.com"
   project_monthly_budget = 10
   enable_automatic_iam = true
+  terraform_service_account = "terraform-createproject@[projectid].iam.gserviceaccount.com"
 }
 ```
