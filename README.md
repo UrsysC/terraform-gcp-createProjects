@@ -34,8 +34,10 @@ terraform {
 }
 
 module "gcp-create-project" {
-  source  = "https://github.com/UrsysC/terraform-gcp-createProjects/"
+  source  = "UrsysC/createProjects/gcp/"
   version = "1.0"
+  billing_account_id = "00000-00000-00000"
+  organization_id = "000000000000"
   project_name = "my-test-project"
   project_owner = "gcp-admins@example.com"
   project_monthly_budget = 10
