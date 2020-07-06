@@ -34,7 +34,7 @@ terraform {
 }
 
 module "gcp-create-project" {
-  source  = "UrsysC/createProjects/gcp/"
+  source  = "UrsysC/createProject/gcp/"
   version = "1.0"
   billing_account_id = "00000-00000-00000"
   organization_id = "000000000000"
