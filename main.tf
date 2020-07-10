@@ -8,10 +8,6 @@ provider "google" {
   alias   = "user"
 }
 
-provider "google-beta" {
-  # google-beta tf provider is required for google billing budget
-}
-
 # Use the credentials of the user that invokes this TF to go and create an
 # access token for the service account we want to impersonate.
 data "google_service_account_access_token" "create-project-service-user" {
@@ -27,9 +23,14 @@ provider "google" {
   access_token = data.google_service_account_access_token.create-project-service-user.access_token
 }
 
+provider "google-beta" {
+  # google-beta tf provider is required for google billing budget
+  access_token = data.google_service_account_access_token.create-project-service-user.access_token
+}
+
 data "google_billing_account" "billing_account" {
   # Do this as our impersonated user for use by impersonated user later
-  provider        = google
+  provider        = google-beta
   billing_account = var.billing_account_id
 }
 
