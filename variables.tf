@@ -9,8 +9,9 @@ variable "project_owner" {
 }
 
 variable "project_monthly_budget" {
-  type        = string
-  description = "The estimated monthly spend for the project.  This value is used to setup budget alerting.  Only accepts integers."
+  type        = number
+  description = "The estimated monthly spend for the project.  This value is used to setup budget alerting.  Only accepts integers. If left blank, no budget alerts will be created."
+  default     = "0"
 }
 
 variable "enable_automatic_iam" {
