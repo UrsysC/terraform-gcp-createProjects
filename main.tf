@@ -25,6 +25,7 @@ provider "google" {
 
 provider "google-beta" {
   # google-beta tf provider is required for google billing budget
+  # we use the terarform service account to make these calls as well
   access_token = data.google_service_account_access_token.create-project-service-user.access_token
 }
 
