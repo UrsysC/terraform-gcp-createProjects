@@ -10,6 +10,7 @@ provider "google" {
 
 provider "google-beta" {
   # google-beta tf provider is required for google billing budget
+  access_token = data.google_service_account_access_token.create-project-service-user.access_token
 }
 
 # Use the credentials of the user that invokes this TF to go and create an
@@ -74,4 +75,10 @@ resource "google_project_iam_policy" "created_project_policy" {
   count       = var.enable_automatic_iam ? 1 : 0
   project     = google_project.created_project.id
   policy_data = data.google_iam_policy.project_owners[0].policy_data
+}
+
+resource "google_project_service" "billing" {
+  provider = google
+  project = var.project_name
+  service = "billingbudgets.googleapis.com"
 }
